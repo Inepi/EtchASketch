@@ -1,15 +1,13 @@
 #gridContainer {
+    height: 800px;
+    width: 800px;
     display: grid;
-    grid-template-columns: repeat(16, 25px);
-    grid-auto-rows: minmax(25px, auto);
-    justify-content: center;
+    justify-content: end;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
     border: 2px solid black;
 }
 
 .etchSquare {
     background-color:blue;
-}
-
-.darkSquare {
-    background-color: black;
 }

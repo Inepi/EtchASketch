@@ -1,8 +1,8 @@
 
 
-var squareCreate = document.createDocumentFragment();
-for (var i=0; i < 256; i++) {
-    var newDiv = document.createElement('div');
+const squareCreate = document.createDocumentFragment();
+for (i=0; i < 256; i++) {
+    let newDiv = document.createElement('div');
     newDiv.id = 'square'+i;
     newDiv.className = 'etchSquare';
     squareCreate.appendChild(newDiv);
@@ -16,6 +16,17 @@ squares.forEach((square) => {
         square.style.backgroundColor = 'black';
     });
 });
+
+
+const resizeButton = document.querySelector("#resizeButton");
+resizeButton.addEventListener('click', () => {
+    resizeGrid();
+});
+
+function resizeGrid() {
+    document.getElementById("gridContainer").style.gridTemplateColumns = "repeat(17, 1fr)";
+    document.getElementById("gridContainer").style.gridTemplateRows = "repeat(17, 1fr)";
+}
 
 
 /*square0.addEventListener("mouseover", function() {
