@@ -1,31 +1,41 @@
 
+document.addEventListener('DOMContentLoaded', () => {
+    createSquares(16);
+    squareDarken();
+});
 
-const squareCreate = document.createDocumentFragment();
-for (i=0; i < 256; i++) {
+function createSquares(squaresPerSide) {
+    squaresPerSide *= squaresPerSide;
+    const squareCreate = document.createDocumentFragment();
+    for (i=0; i < squaresPerSide; i++) {
     let newDiv = document.createElement('div');
     newDiv.id = 'square'+i;
     newDiv.className = 'etchSquare';
     squareCreate.appendChild(newDiv);
 }
+    gridContainer.appendChild(squareCreate);
+}
 
-gridContainer.appendChild(squareCreate);
+const resizeButton = document.querySelector("#resizeButton");
+resizeButton.addEventListener('click', () => {
+    let numSquares = parseInt(prompt("How many squares in a row?"));
+    resizeGrid(numSquares);
+    createSquares(numSquares);
+    squareDarken();
+});
 
+function resizeGrid(squaresPerSide) {
+    document.getElementById("gridContainer").style.gridTemplateColumns = `repeat(${squaresPerSide}, 1fr)`
+    document.getElementById("gridContainer").style.gridTemplateRows = `repeat(${squaresPerSide}, 1fr)`
+}
+
+function squareDarken () {
 const squares = document.querySelectorAll("div.etchSquare")
 squares.forEach((square) => {
     square.addEventListener('mouseover', () => {
         square.style.backgroundColor = 'black';
     });
 });
-
-
-const resizeButton = document.querySelector("#resizeButton");
-resizeButton.addEventListener('click', () => {
-    resizeGrid();
-});
-
-function resizeGrid() {
-    document.getElementById("gridContainer").style.gridTemplateColumns = "repeat(17, 1fr)";
-    document.getElementById("gridContainer").style.gridTemplateRows = "repeat(17, 1fr)";
 }
 
 
