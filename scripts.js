@@ -9,3 +9,19 @@ for (var i=0; i < 256; i++) {
 }
 
 gridContainer.appendChild(squareCreate);
+
+const squares = document.querySelectorAll("div.etchSquare")
+squares.forEach((square) => {
+    square.addEventListener('mouseover', () => {
+        square.style.backgroundColor = 'black';
+    });
+});
+
+
+/*square0.addEventListener("mouseover", function() {
+    this.style.backgroundColor = 'black';
+});
+
+function changeColor() {
+    this.style.backgroundColor = 'black';
+} */
