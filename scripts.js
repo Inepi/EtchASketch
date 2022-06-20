@@ -19,9 +19,15 @@ function createSquares(squaresPerSide) {
 const resizeButton = document.querySelector("#resizeButton");
 resizeButton.addEventListener('click', () => {
     let numSquares = parseInt(prompt("How many squares in a row?"));
+    if (numSquares > 100) {
+        alert('Please enter a value under 100!')
+    }
+    else if (numSquares <= 100) {
     resizeGrid(numSquares);
     createSquares(numSquares);
+    squareLighten();
     squareDarken();
+    }
 });
 
 function resizeGrid(squaresPerSide) {
@@ -33,8 +39,15 @@ function squareDarken () {
 const squares = document.querySelectorAll("div.etchSquare")
 squares.forEach((square) => {
     square.addEventListener('mouseover', () => {
-        square.style.backgroundColor = 'black';
+        square.style.backgroundColor= 'black';
     });
+});
+}
+
+function squareLighten () {
+    const squares = document.querySelectorAll("div.etchSquare")
+    squares.forEach((square) => {
+    square.style.backgroundColor = 'blue';
 });
 }
 
