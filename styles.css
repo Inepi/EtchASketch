@@ -9,7 +9,8 @@
 }
 
 .etchSquare {
-    background-color:blue;
+    background-color: whitesmoke;
+    border: 0.25px solid black;
 }
 
 .blackSquare {

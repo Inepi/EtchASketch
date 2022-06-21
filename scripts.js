@@ -1,8 +1,13 @@
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     createSquares(16);
     squareDarken();
 });
+
+/* document.addEventListener('DOMContentLoaded', () => {
+    createSquares(16);
+    squareDarken();
+}); */
 
 function createSquares(squaresPerSide) {
     squaresPerSide *= squaresPerSide;
@@ -23,9 +28,9 @@ resizeButton.addEventListener('click', () => {
         alert('Please enter a value under 100!')
     }
     else if (numSquares <= 100) {
+    cleanUp();
     resizeGrid(numSquares);
     createSquares(numSquares);
-    squareLighten();
     squareDarken();
     }
 });
@@ -39,18 +44,26 @@ function squareDarken () {
 const squares = document.querySelectorAll("div.etchSquare")
 squares.forEach((square) => {
     square.addEventListener('mouseover', () => {
-        square.style.backgroundColor= 'black';
+        square.className = ('blackSquare');
     });
 });
 }
 
 function squareLighten () {
-    const squares = document.querySelectorAll("div.etchSquare")
+    const squares = document.querySelectorAll("div.blackSquare")
     squares.forEach((square) => {
-    square.style.backgroundColor = 'blue';
+    square.className = 'etchSquare'
 });
 }
 
+function cleanUp () {
+    const destroy = document.querySelector("#gridContainer")
+    let square = destroy.lastElementChild;
+    while (square) {
+        destroy.removeChild(square);
+        square = destroy.lastElementChild;
+    }
+}
 
 /*square0.addEventListener("mouseover", function() {
     this.style.backgroundColor = 'black';
@@ -58,4 +71,4 @@ function squareLighten () {
 
 function changeColor() {
     this.style.backgroundColor = 'black';
-} */
+} */ 
